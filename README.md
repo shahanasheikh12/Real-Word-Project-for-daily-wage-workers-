@@ -63,6 +63,7 @@ Windows: python -m venv venv then .\venv\Scripts\activate
 Mac/Linux: python3 -m venv venv then source venv/bin/activate
 Install dependencies: pip install -r requirements.txt
 Run the server: uvicorn main:app --port 8000 --reload
+
 🛡️ Admin Account Initialization
 To access the secure Admin Dashboard (/admin):
 
@@ -72,9 +73,13 @@ sql
 
 
 UPDATE public.users 
+
 SET role = 'admin', must_change_password = true 
+
 WHERE email = 'admin@dailywork.com';
+
 Log in to the application to set a secure password and access the management interface.
+
 📁 Repository Structure
 text
 
