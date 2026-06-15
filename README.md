@@ -69,18 +69,18 @@ Install dependencies: pip install -r requirements.txt
 
 Run the server: uvicorn main:app --port 8000 --reload
 
-🛡️ Admin Account Initialization
-To access the secure Admin Dashboard (/admin):
+🛡️ Admin Account Initialization <br>
+To access the secure Admin Dashboard (/admin):<br>
 
-Register a standard user account with the email admin@dailywork.com.
+Register a standard user account with the email admin@dailywork.com.<br>
 Go to your Supabase SQL Editor and elevate the privileges:
-sql
+sql<br>
 
 
-UPDATE public.users 
-SET role = 'admin', must_change_password = true 
-WHERE email = 'admin@dailywork.com';
-Log in to the application to set a secure password and access the management interface.
+UPDATE public.users <br>
+SET role = 'admin', must_change_password = true <br>
+WHERE email = 'admin@dailywork.com';<br>
+Log in to the application to set a secure password and access the management interface.<br>
 
 📁 Repository Structure
 text
