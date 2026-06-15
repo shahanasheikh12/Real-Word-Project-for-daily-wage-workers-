@@ -78,11 +78,8 @@ sql
 
 
 UPDATE public.users 
-
 SET role = 'admin', must_change_password = true 
-
 WHERE email = 'admin@dailywork.com';
-
 Log in to the application to set a secure password and access the management interface.
 
 📁 Repository Structure
