@@ -85,13 +85,13 @@ text
 
 
 dailywork/
-├── ai/                 # Python FastAPI Microservice (NLP, matching, fraud)<br>
-├── public/             # Static assets<br>
+├── ai/                                       # Python FastAPI Microservice (NLP, matching, fraud)<br>
+├── public/                                   # Static assets<br>
 ├── src/<br>
-│   ├── components/     # Reusable UI components (JobCards, Layouts, etc.)<br>
-│   ├── context/        # React context (AuthContext)<br>
-│   ├── pages/          # Route-level components (Home, Profile, Map, Admin)<br>
-│   └── utils/          # Helpers (distance calculation, skill metadata)<br>
+│   ├── components/                           # Reusable UI components (JobCards, Layouts, etc.)<br>
+│   ├── context/                              # React context (AuthContext)<br>
+│   ├── pages/                                # Route-level components (Home, Profile, Map, Admin)<br>
+│   └── utils/                                # Helpers (distance calculation, skill metadata)<br>
 ├── supabase/<br>
-│   └── migrations/     # SQL scripts defining DB schema and RLS policies<br>
-└── .env.example        # Environment variable template<br>
+│   └── migrations/                           # SQL scripts defining DB schema and RLS policies<br>
+└── .env.example                              # Environment variable template<br>
