@@ -57,7 +57,8 @@
    Install dependencies: npm install
    ****
 Start the development server: npm run dev <br>
-3. AI Microservice Setup (FastAPI)<br>
+
+# 3. AI Microservice Setup (FastAPI)<br>
 Navigate to the AI directory: cd ai<br>
 
 Create and activate a virtual environment:<br>
@@ -66,7 +67,7 @@ Mac/Linux: python3 -m venv venv then source venv/bin/activate<br>
 Install dependencies: pip install -r requirements.txt<br>
 Run the server: uvicorn main:app --port 8000 --reload<br>
 
-🛡️ Admin Account Initialization <br>
+# 🛡️ Admin Account Initialization <br>
 To access the secure Admin Dashboard (/admin):<br>
 
 Register a standard user account with the email admin@dailywork.com.<br>
@@ -74,7 +75,7 @@ Go to your Supabase SQL Editor and elevate the privileges:
 sql<br>
 
 
-UPDATE public.users <br>
+# UPDATE public.users <br>
 SET role = 'admin', must_change_password = true <br>
 WHERE email = 'admin@dailywork.com';<br>
 Log in to the application to set a secure password and access the management interface.<br>
