@@ -58,10 +58,15 @@
 Start the development server: npm run dev
 3. AI Microservice Setup (FastAPI)
 Navigate to the AI directory: cd ai
+
 Create and activate a virtual environment:
+
 Windows: python -m venv venv then .\venv\Scripts\activate
+
 Mac/Linux: python3 -m venv venv then source venv/bin/activate
+
 Install dependencies: pip install -r requirements.txt
+
 Run the server: uvicorn main:app --port 8000 --reload
 
 🛡️ Admin Account Initialization
