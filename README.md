@@ -55,19 +55,16 @@
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
    VITE_AI_API_URL=http://localhost:8000
    Install dependencies: npm install
-Start the development server: npm run dev
-3. AI Microservice Setup (FastAPI)
-Navigate to the AI directory: cd ai
+   ****
+Start the development server: npm run dev <br>
+3. AI Microservice Setup (FastAPI)<br>
+Navigate to the AI directory: cd ai<br>
 
-Create and activate a virtual environment:
-
-Windows: python -m venv venv then .\venv\Scripts\activate
-
-Mac/Linux: python3 -m venv venv then source venv/bin/activate
-
-Install dependencies: pip install -r requirements.txt
-
-Run the server: uvicorn main:app --port 8000 --reload
+Create and activate a virtual environment:<br>
+Windows: python -m venv venv then .\venv\Scripts\activate<br>
+Mac/Linux: python3 -m venv venv then source venv/bin/activate<br>
+Install dependencies: pip install -r requirements.txt<br>
+Run the server: uvicorn main:app --port 8000 --reload<br>
 
 🛡️ Admin Account Initialization <br>
 To access the secure Admin Dashboard (/admin):<br>
