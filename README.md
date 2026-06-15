@@ -5,6 +5,7 @@
 ![DailyWork Banner](https://via.placeholder.com/1200x400/0f172a/fde047?text=DailyWork+Platform)
 
 ---
+## Live Deployed :-https://real-word-project-for-daily-wage-wo.vercel.app/worker/profile
 
 ## ✨ Key Features
 
