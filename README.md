@@ -80,18 +80,18 @@ SET role = 'admin', must_change_password = true <br>
 WHERE email = 'admin@dailywork.com';<br>
 Log in to the application to set a secure password and access the management interface.<br>
 
-📁 Repository Structure
+# 📁 Repository Structure
 text
 
 
 dailywork/
-├── ai/                 # Python FastAPI Microservice (NLP, matching, fraud)
-├── public/             # Static assets
-├── src/
-│   ├── components/     # Reusable UI components (JobCards, Layouts, etc.)
-│   ├── context/        # React context (AuthContext)
-│   ├── pages/          # Route-level components (Home, Profile, Map, Admin)
-│   └── utils/          # Helpers (distance calculation, skill metadata)
-├── supabase/
-│   └── migrations/     # SQL scripts defining DB schema and RLS policies
-└── .env.example        # Environment variable template
+├── ai/                 # Python FastAPI Microservice (NLP, matching, fraud)<br>
+├── public/             # Static assets<br>
+├── src/<br>
+│   ├── components/     # Reusable UI components (JobCards, Layouts, etc.)<br>
+│   ├── context/        # React context (AuthContext)<br>
+│   ├── pages/          # Route-level components (Home, Profile, Map, Admin)<br>
+│   └── utils/          # Helpers (distance calculation, skill metadata)<br>
+├── supabase/<br>
+│   └── migrations/     # SQL scripts defining DB schema and RLS policies<br>
+└── .env.example        # Environment variable template<br>
