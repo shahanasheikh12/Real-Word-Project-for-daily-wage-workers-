@@ -337,10 +337,11 @@ export default function WorkerProfile() {
       setIsRecording(false)
       
       try {
-        const res = await fetch('http://localhost:8000/api/voice-onboard', {
+        const aiApiUrl = import.meta.env.VITE_AI_API_URL || 'http://localhost:8000'
+        const res = await fetch(`${aiApiUrl}/api/voice-onboard`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ transcript })
+          body: JSON.stringify({ transcript }),
         })
         const data = await res.json()
         
