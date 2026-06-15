@@ -12,5 +12,12 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
+if not settings.VITE_SUPABASE_URL or not settings.VITE_SUPABASE_ANON_KEY:
+    raise ValueError(
+        "CRITICAL ERROR: Supabase environment variables are missing! "
+        "You must add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY "
+        "to your Render Environment Variables tab."
+    )
+
 # Global Supabase client
 supabase: Client = create_client(settings.VITE_SUPABASE_URL, settings.VITE_SUPABASE_ANON_KEY)
