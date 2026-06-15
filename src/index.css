@@ -1,0 +1,357 @@
+/*
+ * DailyWork — Global Stylesheet
+ * Tailwind CSS v4 with custom design system matching dailywork-ui-design.html
+ *
+ * Color palette:
+ *   Deep blue:   #1A2B4A
+ *   Gold yellow: #F5C518
+ *   Concrete:    #E8E4DE
+ *   Cream white: #FAF9F6
+ *
+ * Fonts:
+ *   Headings/buttons: Syne
+ *   Body text:        DM Sans
+ *   Data/numbers:     JetBrains Mono
+ */
+
+@import "tailwindcss";
+/* Leaflet map styles */
+@import "leaflet/dist/leaflet.css";
+
+/* =====================================================
+   LEAFLET MAP — custom pin marker and container
+   ===================================================== */
+.leaflet-container {
+  border-radius: var(--radius-btn);
+  z-index: 0; /* prevent bleeding over modal/nav */
+}
+
+/* Override leaflet default blue link color */
+.leaflet-control-attribution a {
+  color: var(--color-dw-slate) !important;
+}
+
+/* =====================================================
+   DESIGN TOKEN DEFINITIONS (Tailwind v4 CSS-first API)
+   ===================================================== */
+@theme {
+  /* Brand colors */
+  --color-dw-blue:        #1A2B4A;
+  --color-dw-yellow:      #F5C518;
+  --color-dw-yellow-soft: #FEF3B4;
+  --color-dw-concrete:    #E8E4DE;
+  --color-dw-white:       #FAF9F6;
+  --color-dw-slate:       #6B7A8D;
+  --color-dw-green:       #2D8A4E;
+  --color-dw-green-soft:  #D4EDDA;
+  --color-dw-red:         #C0392B;
+  --color-dw-red-soft:    #FADBD8;
+  --color-dw-orange:      #E67E22;
+  --color-dw-border:      #D8D4CE;
+  --color-dw-bg:          #F0EDE8;
+
+  /* Font families */
+  --font-display: "Syne", sans-serif;
+  --font-sans:    "DM Sans", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* Border radii */
+  --radius-card:  12px;
+  --radius-btn:   8px;
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-dw-bg);
+  color: var(--color-dw-blue);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar hidden for phone frame overflow */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* =====================================================
+   FONT UTILITY CLASSES
+   ===================================================== */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-sans); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* =====================================================
+   PHONE FRAME — centers app in desktop view
+   ===================================================== */
+.phone-frame {
+  width: 100%;
+  max-width: 390px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--color-dw-white);
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* On desktop, add a card shadow effect */
+@media (min-width: 480px) {
+  #root {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--color-dw-bg);
+    padding: 24px 0;
+  }
+  .phone-frame {
+    min-height: calc(100dvh - 48px);
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    border-radius: 36px;
+    box-shadow:
+      0 0 0 10px var(--color-dw-blue),
+      0 32px 64px rgba(26, 43, 74, 0.3);
+  }
+}
+
+/* =====================================================
+   AVAILABILITY BEACON — signature animated component
+   ===================================================== */
+@keyframes beacon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(245, 197, 24, 0); }
+}
+
+.beacon-pulse {
+  animation: beacon-pulse 2s ease-in-out infinite;
+}
+
+/* =====================================================
+   BOTTOM NAV — sticky navigation bar
+   ===================================================== */
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  background: var(--color-dw-white);
+  border-top: 1px solid var(--color-dw-border);
+}
+
+/* =====================================================
+   FORM ELEMENTS — premium custom styling
+   ===================================================== */
+.dw-input {
+  width: 100%;
+  background: var(--color-dw-white);
+  border: 1.5px solid var(--color-dw-border);
+  border-radius: var(--radius-btn);
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 16px; /* Increased from 14px for mobile readability/zoom prevention */
+  color: var(--color-dw-blue);
+  outline: none;
+  min-height: 44px; /* Ensure input tap target is large enough */
+  transition: border-color 0.15s ease;
+}
+
+.dw-input:focus {
+  border-color: var(--color-dw-blue);
+}
+
+.dw-input::placeholder {
+  color: var(--color-dw-slate);
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn-primary {
+  width: 100%;
+  background: var(--color-dw-blue);
+  color: var(--color-dw-white);
+  font-family: var(--font-display);
+  font-size: 16px; /* Increased to 16px */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  width: 100%;
+  background: transparent;
+  color: var(--color-dw-blue);
+  font-family: var(--font-display);
+  font-size: 16px; /* Increased to 16px */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 13px 24px;
+  border-radius: var(--radius-btn);
+  border: 2px solid var(--color-dw-blue);
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--color-dw-blue);
+  color: var(--color-dw-white);
+}
+
+.btn-yellow {
+  background: var(--color-dw-yellow);
+  color: var(--color-dw-blue);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 12px 24px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  transition: opacity 0.15s ease;
+}
+
+.btn-yellow:hover { opacity: 0.9; }
+
+/* =====================================================
+   SKILL BADGE — dark blue pill with yellow dot
+   ===================================================== */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-dw-blue);
+  color: var(--color-dw-white);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* =====================================================
+   STATUS CHIPS
+   ===================================================== */
+.chip-open       { background: var(--color-dw-green-soft); color: var(--color-dw-green); }
+.chip-pending    { background: var(--color-dw-yellow-soft); color: #92620A; }
+.chip-confirmed  { background: #DBEAFE; color: #1D4ED8; }
+.chip-completed  { background: var(--color-dw-concrete); color: var(--color-dw-slate); }
+.chip-cancelled  { background: var(--color-dw-red-soft); color: var(--color-dw-red); }
+
+.status-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* =====================================================
+   JOB CARD
+   ===================================================== */
+.job-card {
+  background: var(--color-dw-white);
+  border: 1px solid var(--color-dw-border);
+  border-radius: var(--radius-card);
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.job-card:hover {
+  border-color: var(--color-dw-blue);
+  box-shadow: 0 4px 16px rgba(26, 43, 74, 0.08);
+}
+
+/* =====================================================
+   AI SUGGESTION BOX
+   ===================================================== */
+.ai-box {
+  background: var(--color-dw-yellow-soft);
+  border: 1.5px solid var(--color-dw-yellow);
+  border-radius: var(--radius-btn);
+  padding: 12px 14px;
+}
+
+/* =====================================================
+   CARD / SURFACE
+   ===================================================== */
+.card {
+  background: var(--color-dw-white);
+  border: 1px solid var(--color-dw-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+
+/* =====================================================
+   FADE-IN ANIMATION
+   ===================================================== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease forwards;
+}
+
+/* =====================================================
+   SHIMMER / SKELETON LOADING
+   ===================================================== */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-dw-concrete) 25%,
+    var(--color-dw-bg) 50%,
+    var(--color-dw-concrete) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* =====================================================
+   PROFILE PHOTO UPLOAD
+   ===================================================== */
+.photo-upload-area {
+  border: 2px dashed var(--color-dw-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.photo-upload-area:hover {
+  border-color: var(--color-dw-blue);
+  background: rgba(26, 43, 74, 0.02);
+}
