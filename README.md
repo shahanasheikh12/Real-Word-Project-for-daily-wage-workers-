@@ -53,3 +53,39 @@
    VITE_SUPABASE_URL=your-supabase-url
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
    VITE_AI_API_URL=http://localhost:8000
+   Install dependencies: npm install
+Start the development server: npm run dev
+3. AI Microservice Setup (FastAPI)
+Navigate to the AI directory: cd ai
+Create and activate a virtual environment:
+Windows: python -m venv venv then .\venv\Scripts\activate
+Mac/Linux: python3 -m venv venv then source venv/bin/activate
+Install dependencies: pip install -r requirements.txt
+Run the server: uvicorn main:app --port 8000 --reload
+🛡️ Admin Account Initialization
+To access the secure Admin Dashboard (/admin):
+
+Register a standard user account with the email admin@dailywork.com.
+Go to your Supabase SQL Editor and elevate the privileges:
+sql
+
+
+UPDATE public.users 
+SET role = 'admin', must_change_password = true 
+WHERE email = 'admin@dailywork.com';
+Log in to the application to set a secure password and access the management interface.
+📁 Repository Structure
+text
+
+
+dailywork/
+├── ai/                 # Python FastAPI Microservice (NLP, matching, fraud)
+├── public/             # Static assets
+├── src/
+│   ├── components/     # Reusable UI components (JobCards, Layouts, etc.)
+│   ├── context/        # React context (AuthContext)
+│   ├── pages/          # Route-level components (Home, Profile, Map, Admin)
+│   └── utils/          # Helpers (distance calculation, skill metadata)
+├── supabase/
+│   └── migrations/     # SQL scripts defining DB schema and RLS policies
+└── .env.example        # Environment variable template
