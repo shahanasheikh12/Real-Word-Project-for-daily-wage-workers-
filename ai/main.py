@@ -6,11 +6,11 @@ from routers import wage, matching, fraud, voice
 
 app = FastAPI(title="DailyWork AI Microservice", version="1.0.0")
 
-# Allow React frontend
+# Allow all origins for production (Vercel)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
